@@ -15,7 +15,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 
@@ -41,23 +40,27 @@ public class Song {
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
-            name="song_Playlist",
-            joinColumns = {@JoinColumn(name = "id")},
-            inverseJoinColumns = {@JoinColumn(name ="id")}
+            name="songPlaylist",
+            joinColumns = {@JoinColumn(name = "idSong")},
+            inverseJoinColumns = {@JoinColumn(name ="idPlaylist")}
     )
-    private List<SongPlaylist> songPlaylist;
+    private List<Playlist> playlists;
+    
+    public Song(){
+        
+    }
     
     public Song(String name, Artist artist){
         this.name=name;
         this.artist=artist;
     }
 
-    public List<SongPlaylist> getSongPlaylist() {
-        return songPlaylist;
+    public List<Playlist> getPlaylists() {
+        return playlists;
     }
 
-    public void setSongPlaylist(List<SongPlaylist> songPlaylist) {
-        this.songPlaylist = songPlaylist;
+    public void setPlaylists(List<Playlist> playlists) {
+        this.playlists = playlists;
     }
     
     

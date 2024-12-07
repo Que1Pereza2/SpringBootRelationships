@@ -34,7 +34,7 @@ public class SongServiceIMPL implements SongService{
     }
 
     @Override
-    public List<Song> getAllSong() {
+    public List<Song> getAllSongs() {
                return repository.findAll();
 
     }

@@ -90,25 +90,6 @@ UNLOCK TABLES;
 -- Table structure for table `song_playlist`
 --
 
-DROP TABLE IF EXISTS `song_playlist`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `song_playlist` (
-  `id` bigint(20) NOT NULL,
-  KEY `song_playlist_playlist_FK` (`id`),
-  CONSTRAINT `song_playlist_playlist_FK` FOREIGN KEY (`id`) REFERENCES `playlist` (`id`),
-  CONSTRAINT `song_playlist_song_FK` FOREIGN KEY (`id`) REFERENCES `song` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `song_playlist`
---
-
-LOCK TABLES `song_playlist` WRITE;
-/*!40000 ALTER TABLE `song_playlist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `song_playlist` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Dumping routines for database 'scrotify'

@@ -33,22 +33,17 @@ public class Playlist {
     @Column(name ="creator")
     private String creator;
     
-    @ManyToMany(mappedBy = "songPlaylist")
-    private List<SongPlaylist> songPlaylist;
+    @ManyToMany(mappedBy = "playlists")
+    private List<Song> songs;
+    
+    public Playlist(){
+        
+    }
 
     public Playlist(String name, String creator) {
         this.name = name;
         this.creator = creator;
     }
-
-    public List<SongPlaylist> getSongPlaylist() {
-        return songPlaylist;
-    }
-
-    public void setSongPlaylist(List<SongPlaylist> songPlaylist) {
-        this.songPlaylist = songPlaylist;
-    }
-
     
     public Long getId() {
         return id;
@@ -74,4 +69,11 @@ public class Playlist {
         this.creator = creator;
     }
 
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
 }

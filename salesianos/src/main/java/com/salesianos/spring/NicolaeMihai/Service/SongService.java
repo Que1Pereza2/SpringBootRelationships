@@ -16,7 +16,7 @@ import java.util.List;
 public interface SongService {
     
     public Song getSong(Long id);
-    public List<Song> getAllSong();
+    public List<Song> getAllSongs();
     public Song addSong( String nombre, Artist artist);
     public Song updateSong(Long id,String nombre);
     public Song deleteSong(Long id);

@@ -14,8 +14,8 @@ import java.util.List;
  */
 public interface PlaylistService {
     
+    public List<Playlist> getAllPlaylists();
     public Playlist getPlaylist(Long id);
-    public List<Playlist> getAllPlaylist();
     public Playlist addPlaylist(String name, String nameCreator);
     public Playlist updatePlaylist(Long id,String name);
     public Playlist deletePlaylist(Long id);

@@ -34,7 +34,7 @@ public class PlaylistServiceIMPL implements PlaylistService{
     }
 
     @Override
-    public List<Playlist> getAllPlaylist() {
+    public List<Playlist> getAllPlaylists() {
         return repository.findAll();
     }
 
