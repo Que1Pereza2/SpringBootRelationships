@@ -1,13 +1,10 @@
-/*
- * 
- * 
- * 
- */
 package com.salesianos.spring.NicolaeMihai.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,40 +16,61 @@ import jakarta.persistence.Table;
 import java.util.List;
 
 /**
- *
+ * Song model class
  * @author Baljeet
  */
+
 @Entity
 @Table(name = "song")
 public class Song {
 
+    /**
+     * Id of the Song
+     */   
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     @Column(name="id")
     private Long id;
     
+    /**
+     * Name of the Song
+     */
     @Column(nullable = false)
     private String name;
     
+    /**
+     * The Artist that created the song
+     */
+    @JsonIgnoreProperties("songs")
     @ManyToOne
     @JoinColumn(name = "song_artist_FK")
     private Artist artist;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    /**
+     * List of playlists in which the song is located
+     * We ignore the songs property in order to avoid an infinite loop
+     */
+    @JsonIgnoreProperties("songs")
+    @ManyToMany( fetch = FetchType.EAGER)
     @JoinTable(
             name="songPlaylist",
-            joinColumns = {@JoinColumn(name = "idSong")},
-            inverseJoinColumns = {@JoinColumn(name ="idPlaylist")}
+            joinColumns = @JoinColumn(name = "idSong", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name ="idPlaylist", referencedColumnName = "id")
     )
     private List<Playlist> playlists;
     
+    /**
+     *  Creates an empty Song
+     */
     public Song(){
-        
     }
     
-    public Song(String name, Artist artist){
+    /**
+     * Creates a new Song
+     * @param name Song's name
+     */
+    public Song(String name){
         this.name=name;
-        this.artist=artist;
     }
 
     public List<Playlist> getPlaylists() {
@@ -62,7 +80,6 @@ public class Song {
     public void setPlaylists(List<Playlist> playlists) {
         this.playlists = playlists;
     }
-    
     
     public Long getId() {
         return id;
@@ -80,12 +97,11 @@ public class Song {
         this.name = name;
     }
 
-    public Artist getIdArtist() {
+    public Artist getArtist() {
         return artist;
     }
 
-    public void setIdArtist(Artist artist) {
+    public void setArtist(Artist artist) {
         this.artist = artist;
     }
-
 }

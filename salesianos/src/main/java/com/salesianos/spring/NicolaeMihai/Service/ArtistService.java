@@ -9,7 +9,7 @@ import com.salesianos.spring.NicolaeMihai.Model.Artist;
 import java.util.List;
 
 /**
- *
+ *  Class that creates the Artist service interface
  * @author Baljeet
  */
 public interface ArtistService {
@@ -18,5 +18,5 @@ public interface ArtistService {
     public List<Artist> getAllArtist();
     public Artist addArtist(String nombre);
     public Artist updateArtist(Long id,String nombre);
-    public Artist deleteArtist(Long id);
+    public void deleteArtist(Long id);
 }

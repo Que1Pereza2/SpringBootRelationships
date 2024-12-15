@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- *
+ * Class that implements the Artist repository.
  * @author Baljeet
  */
 @Repository
